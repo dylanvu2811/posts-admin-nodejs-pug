@@ -1,0 +1,39 @@
+extends ../layout.pug
+
+block morecss
+  script(src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js')
+  script.
+    tinymce.init({selector:'textarea'});
+
+block content
+  header.section-header
+    .tbl
+      .tbl-row
+        .tbl-cell
+          h3 Sửa Bài Viết
+
+  .box-typical.box-typical-padding
+    form
+      input.id(type='hidden' name='id' value=`${ data && data.post ? data.post.id : ''}`)
+      .alert.alert-danger(role='alert' style=`${!data || !data.error ? 'display:none'  : '' } `)
+              if data && data.error
+              span #{data.error}
+      .form-group.row
+        label.col-sm-2.form-control-label Title
+        .col-sm-10
+          p.form-control-static
+            input.form-control.title(type='text' name="title" value=`${ data && data.post ? data.post.title : ''}`)
+      .form-group.row
+        label.col-sm-2.form-control-label Description
+        .col-sm-10
+          p.form-control-static
+            input.form-control.description(type='text' name="description" value=`${ data && data.post ? data.post.description : ''}`)
+      .form-group.row
+        label.col-sm-2.form-control-label(for='exampleSelect') Content
+        .col-sm-10
+          textarea.form-control(rows='4' name="content") #{data.post.content}
+
+      input.btn.btn-inline.btn-primary.ladda-button.post_edit(type='button' value='Save' data-style='expand-right' data-size='xs')
+  
+block morejs
+  script(type='text/javascript' src='/static/js/post.js')

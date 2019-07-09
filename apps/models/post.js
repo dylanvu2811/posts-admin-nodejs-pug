@@ -44,8 +44,8 @@ const getPostById = (id) => {
 const updatePost = (params) => {
     if (params) {
         const defer = q.defer();
-        const query = connec.query('UPDATE posts SET title = ?, author = ?, content = ?, updated_at = ? WHERE id = ?', 
-        [params.title, params.author, params.content, new Date(), params.id],function (error, result, fields) {
+        const query = connec.query('UPDATE posts SET title = ?, description = ?, content = ?, updated_at = ? WHERE id = ?', 
+        [params.title, params.description, params.content, new Date(), params.id],function (error, result, fields) {
             if (error) {
                 defer.reject(error);
             }else {
