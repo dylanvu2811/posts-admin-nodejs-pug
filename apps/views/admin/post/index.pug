@@ -1,0 +1,25 @@
+extends ../layout.pug
+
+block content
+  table#table-edit.table.table-bordered.table-hover
+    thead
+      tr
+        th(width='1')
+          | Id
+        th Name
+        th Description     
+        th
+    tbody
+      if data && data.posts
+        for item in data.posts
+          tr
+            td= item.id
+            td Last quarter revene
+            td= item.content
+            td(width='1')
+              .tabledit-toolbar.btn-toolbar
+                .btn-group.btn-group-sm
+                  a.tabledit-edit-button.btn.btn-sm.btn-default
+                    span.glyphicon.glyphicon-pencil
+                  a.tabledit-delete-button.btn.btn-sm.btn-default
+                    span.glyphicon.glyphicon-trash

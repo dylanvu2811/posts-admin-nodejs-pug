@@ -1,0 +1,62 @@
+doctype html
+head(lang='en')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+  meta(http-equiv='x-ua-compatible' content='ie=edge')
+  title StartUI - Premium Bootstrap 4 Admin Dashboard Template
+  link(href='/static/themeadmin/img/favicon.144x144.png' rel='apple-touch-icon' type='image/png' sizes='144x144')
+  link(href='/static/themeadmin/img/favicon.114x114.png' rel='apple-touch-icon' type='image/png' sizes='114x114')
+  link(href='/static/themeadmin/img/favicon.72x72.png' rel='apple-touch-icon' type='image/png' sizes='72x72')
+  link(href='/static/themeadmin/img/favicon.57x57.png' rel='apple-touch-icon' type='image/png')
+  link(href='/static/themeadmin/img/favicon.png' rel='icon' type='image/png')
+  link(href='/static/themeadmin/img/favicon.ico' rel='shortcut icon')
+  // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+  //if lt IE 9
+    script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  link(rel='stylesheet' href='/static/themeadmin/css/separate/pages/login.min.css')
+  link(rel='stylesheet' href='/static/themeadmin/css/lib/font-awesome/font-awesome.min.css')
+  link(rel='stylesheet' href='/static/themeadmin/css/lib/bootstrap/bootstrap.min.css')
+  link(rel='stylesheet' href='/static/themeadmin/css/main.css')
+.page-center
+  .page-center-in
+    .container-fluid
+      form.sign-box(role='form' method='POST' action='/admin/signup')
+        .alert.alert-danger(role='alert' style=`${!data || !data.error ? 'display:none'  : '' } `)
+            if data && data.error
+            span #{data.error}
+        header.sign-title Sign Up
+        .form-group
+          input.form-control(type='text' name='name' placeholder='Name')
+        .form-group
+          input.form-control(type='text' name='email' placeholder='E-Mail')
+        .form-group
+          input.form-control(type='password' name='passwd' placeholder='Password')
+        .form-group
+          input.form-control(type='password' name='repasswd' placeholder='Repeat password')
+        button.btn.btn-rounded.btn-success.sign-up(type='submit') Sign up
+        p.sign-note
+          | Already have an account? 
+          a(href='/admin/signin') Sign in
+   
+script(src='/static/themeadmin/js/lib/jquery/jquery-3.2.1.min.js')
+script(src='/static/themeadmin/js/lib/popper/popper.min.js')
+script(src='/static/themeadmin/js/lib/tether/tether.min.js')
+script(src='/static/themeadmin/js/lib/bootstrap/bootstrap.min.js')
+script(src='/static/themeadmin/js/plugins.js')
+script(type='text/javascript' src='/static/themeadmin/js/lib/match-height/jquery.matchHeight.min.js')
+script.
+  $(function() {
+  $('.page-center').matchHeight({
+  target: $('html')
+  });
+  $(window).resize(function(){
+  setTimeout(function(){
+  $('.page-center').matchHeight({ remove: true });
+  $('.page-center').matchHeight({
+  target: $('html')
+  });
+  },100);
+  });
+  });
+script(src='/static/themeadmin/js/app.js')
