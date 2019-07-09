@@ -3,7 +3,7 @@ const router = express.Router();
 const user_md = require('../models/user');
 const post_md = require('../models/post');
 const helper = require('../helpers/helper');
-
+const slugify = require('slugify');
 router.get('/', (req, res) => {
 
     if (req.session.user){
@@ -127,10 +127,10 @@ router.post('/post/add', (req, res) => {
             const now = new Date();
             params.created_at = now;
             params.updated_at = now;
-    
+            params.slug = slugify(params.title);
             const data = post_md.addPost(params);
             data.then((result) => {
-                res.redirect('/admin');
+                res.redirect('/admin/post/index');
             }).catch((err) => {
                 const data = {
                     error: 'insert false'

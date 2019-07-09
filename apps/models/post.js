@@ -4,7 +4,7 @@ const connec = db.getConnection();
 
 const getAllPost = () => {
     const defer = q.defer();
-    const query = connec.query('SELECT * FROM posts', function (error, posts, fields) {
+    const query = connec.query('SELECT * FROM posts ORDER BY updated_at DESC', function (error, posts, fields) {
         if (error) {
             defer.reject(error);
         }else {

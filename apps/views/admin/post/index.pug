@@ -1,21 +1,23 @@
 extends ../layout.pug
 
 block content
+  header.section-header
+    .tbl
+      .tbl-row
+        .tbl-cell
+          h3 Danh Sách Bài Viết
   table#table-edit.table.table-bordered.table-hover
     thead
       tr
-        th(width='1')
-          | Id
         th Name
         th Description     
-        th
+        th Action
     tbody
       if data && data.posts
         for item in data.posts
           tr
-            td= item.id
-            td Last quarter revene
-            td= item.content
+            td= item.title
+            td= item.description
             td(width='1')
               .tabledit-toolbar.btn-toolbar
                 .btn-group.btn-group-sm
