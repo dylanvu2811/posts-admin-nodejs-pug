@@ -127,7 +127,7 @@ router.post('/post/add', (req, res) => {
             const now = new Date();
             params.created_at = now;
             params.updated_at = now;
-            params.slug = slugify(params.title);
+            params.slug = '/' + slugify(params.title);
             const data = post_md.addPost(params);
             data.then((result) => {
                 res.redirect('/admin/post/index');
